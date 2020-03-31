@@ -858,7 +858,7 @@ class icit_srdb {
 					case 'utf32':
 						//$encoding = 'utf8';
 						$this->add_error( "The table \"{$table}\" is encoded using \"{$encoding}\" which is currently unsupported.", 'results' );
-//						continue;
+						continue 2;	// php7 compatibled.
 						break;
 
 					default:
@@ -1005,7 +1005,7 @@ class icit_srdb {
 	public function get_columns( $table ) {
 		$primary_key = array();
 		$columns = array( );
-		$columninf = array( );
+		$columntype = array( );
 
 		// Get a list of columns in this table
 		$fields = $this->db_query( "DESCRIBE {$table}" );
